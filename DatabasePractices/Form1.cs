@@ -63,5 +63,14 @@ namespace DatabasePractices
             MessageBox.Show(update_Command.ExecuteNonQuery() + " book updated!");
             connection.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            connection.Open();
+            OleDbCommand delete_Command = new OleDbCommand("delete from book where bookID= " + comboBox1.SelectedItem.ToString(), connection);
+            MessageBox.Show(delete_Command.ExecuteNonQuery() + " book deleted!");
+            comboBox1.Items.Remove(comboBox1.SelectedItem);
+            connection.Close();
+        }
     }
 }
