@@ -55,5 +55,13 @@ namespace DatabasePractices
             MessageBox.Show(add_Command.ExecuteNonQuery() + " book added");
             connection.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            connection.Open();
+            OleDbCommand update_Command = new OleDbCommand("update book set bookName='"+textBox1.Text+"' ," + "bookWriter='"+textBox2.Text+"'," + "bookPage="+textBox3.Text+"," + "bookPublishDate="+textBox4.Text+" where bookID="+comboBox1.SelectedItem.ToString()  , connection);
+            MessageBox.Show(update_Command.ExecuteNonQuery() + " book updated!");
+            connection.Close();
+        }
     }
 }
